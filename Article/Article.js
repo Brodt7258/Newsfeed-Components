@@ -24,7 +24,7 @@ class Article {
   }
 
   deleteArticle() {
-  this.domElement.parentNode.removeChild(this.domElement);
+    this.domElement.parentNode.removeChild(this.domElement);
   }
 }
 
