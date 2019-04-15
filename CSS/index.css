@@ -117,10 +117,56 @@
   height: 0;
   opacity: 0;
 }
+form {
+  margin: 20px 10% 60px;
+  padding: 20px 5% 25px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+form label,
+form input {
+  display: block;
+}
+form input,
+form textarea {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 50%;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #cccccc;
+}
+form textarea {
+  width: calc(100% - 20px);
+  resize: none;
+}
+form label {
+  font-size: 1.4rem;
+}
+form button {
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.35s;
+}
+form button:hover {
+  color: tomato;
+}
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto';
   background-color: #fffef7;
+}
+hr {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
