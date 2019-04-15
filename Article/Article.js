@@ -13,20 +13,37 @@ class Article {
 
     this.closeButton = this.domElement.querySelector('.close');
     this.closeButton.addEventListener('click', () => this.deleteArticle());
+
+    this.open = false;
     
   }
 
-  expandArticle() {
-    // Using our reference to the domElement, toggle a class to expand or hide the article.
-    this.domElement.classList.toggle('article-open');
-    this.expandButton.textContent = this.expandButton.textContent === 'expand' ? 'close' : 'expand';
-    this.closeButton.style.cssText = 'display: initial';
+  
+  
+  expandArticle () {
+      // Using our reference to the domElement, toggle a class to expand or hide the article.
+      //this.domElement.classList.toggle('article-open');
+
+      const article = this.domElement.querySelector('.article-content');
+      if (!this.domElement.classList.contains("closed")) {
+        TweenLite.to(article, 0.3, { height: 0, opacity: 0 });
+        this.domElement.classList.add("closed");
+    } else {
+        TweenLite.set(article, { height: "auto", opacity: 1 });
+        TweenLite.from(article, 0.5, { height: 0, opacity: 0 });
+        this.domElement.classList.remove("closed");
+    }
+
+    this.closeButton.style.cssText = "display: initial";
   }
+    
 
   deleteArticle() {
     this.domElement.parentNode.removeChild(this.domElement);
   }
 }
+
+
 
 /* START HERE: 
 
@@ -38,3 +55,4 @@ class Article {
 document.body.querySelectorAll('.article')
   .forEach(e => new Article(e));
 // let articles;
+

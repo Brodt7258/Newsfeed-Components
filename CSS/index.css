@@ -80,7 +80,6 @@
   border-radius: 10px;
   background-color: white;
   position: relative;
-  height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
 }
@@ -114,8 +113,9 @@
   transform: translate(-50%);
   background-color: white;
 }
-.article-open {
-  height: 400px;
+.article-content {
+  height: 0;
+  opacity: 0;
 }
 html,
 body {
