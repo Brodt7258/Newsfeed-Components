@@ -1,21 +1,55 @@
+
 const form = document.body.querySelector('form');
 
 form.querySelector('button')
   .addEventListener('click', (e) => {
     e.preventDefault();
 
-    const submission = {
+    const submission = { //get the relevant info from the page
       title: form.querySelector('input').value,
-      date: Date.now(),
+      date: new Date(),
       body: form.querySelector('textarea').value.split('\n').filter(e => e !== '')
     };
-    
-    form.querySelector('input').value = '';
+
+    form.querySelector('input').value = ''; //reset the user inputs
     form.querySelector('textarea').value = '';
 
-    console.log(submission);
-  })
+    const article = document.createElement('div'); //build out the new article to be added
+    article.classList.add('article', 'closed');
+    article.innerHTML = `
+      <div class="article-header">
+        <h2>${submission.title}</h2>
+        <p class="date">
+          ${submission.date.toString().substring(4, 15) /* Vanilla JS dates are kind of awful, and I refuse to format any further */}
+        </p>
+        <i class="far fa-times-circle close"></i>
+      </div>
+      <div class="article-content">
+        ${submission.body.map(e => `<p>${e}</p>`).join('')}
+      </div>
+      <span class='expandButton'></span>
+    `;
 
+    document.body.querySelector('.articles')
+      .appendChild(article); //add it to the dom
+
+    TweenLite.from(article, 0.3, //animate its appearance on screen
+      { 
+        width: '25%',
+        margin: 'auto',
+        height: 0,
+        padding: 0,
+        opacity: 0,
+        onComplete: () => {
+          article.style.cssText = ''; //eliminate some residual inline styles from tweening that would cause problems
+        }
+      });
+    
+
+    new Article(article); //decorate it with the pre-built functions of the Article class
+  });
+  //So, this got somewhat messy.  On a larger project, I'd try to split more of this up.
+  //Or just use React, since it's basically built for making this stuff super easy.
 
 
 // Auto-resizing for the textarea
