@@ -10,6 +10,9 @@ class Article {
     this.expandButton.textContent = 'expand';
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', () => this.expandArticle());
+
+    this.closeButton = this.domElement.querySelector('.close');
+    this.closeButton.addEventListener('click', () => this.deleteArticle());
     
   }
 
@@ -17,6 +20,11 @@ class Article {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle('article-open');
     this.expandButton.textContent = this.expandButton.textContent === 'expand' ? 'close' : 'expand';
+    this.closeButton.textContent = 'X';
+  }
+
+  deleteArticle() {
+  this.domElement.parentNode.removeChild(this.domElement);
   }
 }
 

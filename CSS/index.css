@@ -91,6 +91,8 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  color: tomato;
+  cursor: pointer;
 }
 .article .expandButton {
   position: absolute;
