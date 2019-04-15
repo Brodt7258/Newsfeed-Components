@@ -15,7 +15,7 @@ form.querySelector('button')
     form.querySelector('textarea').value = '';
 
     const article = document.createElement('div'); //build out the new article to be added
-    article.classList.add('article', 'closed');
+    article.classList.add('article');
     article.innerHTML = `
       <div class="article-header">
         <h2>${submission.title}</h2>
@@ -28,12 +28,13 @@ form.querySelector('button')
         ${submission.body.map(e => `<p>${e}</p>`).join('')}
       </div>
       <span class='expandButton'></span>
-    `;
+    `; // Were this 'real', it would need to be sanitised of potentially malicious inputs.
+       // I'm not a security expert, better to use a canned module for that
 
     document.body.querySelector('.articles')
       .appendChild(article); //add it to the dom
 
-    TweenLite.from(article, 0.3, //animate its appearance on screen
+    TweenLite.from(article, 0.3, //animate its appearance on screen.  Literally the deletion animation, played in reverse
       { 
         width: '25%',
         margin: 'auto',

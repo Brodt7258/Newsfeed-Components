@@ -17,32 +17,30 @@ class Article {
     this.open = false;
     
   }
-
-  
   
   expandArticle () {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     //this.domElement.classList.toggle('article-open');
 
+    // I first tried doing this as an IIFE with a toggle variable in the closure.  Kept losing its 'this' binding
+    // Nothing I tried fixed that.  So I gave up and went with a class property.
     const article = this.domElement.querySelector('.article-content');
-    if (!this.domElement.classList.contains("closed")) {
+    if (this.open) {
         TweenLite.to(article, 0.3, { height: 0, opacity: 0 });
-        this.domElement.classList.add("closed");
         this.expandButton.textContent = 'Click to Expand';
     } else {
-        TweenLite.set(article, { height: "auto", opacity: 1 });
-        TweenLite.from(article, 0.5, { height: 0, opacity: 0 });
-        this.domElement.classList.remove("closed");
+        TweenLite.set(article, { height: "auto", opacity: 1 });   // Smooth transitions of dynamic height seem particularly difficult
+        TweenLite.from(article, 0.5, { height: 0, opacity: 0 });  // This appears to get around the issue though.  Best option I found.
         this.expandButton.textContent = 'Click to Close';
     }
+    this.open = !this.open;
 
-    this.closeButton.style.cssText = "display: initial";
-  }
-    
+    this.closeButton.style.cssText = "display: initial"; // The content has been view at least once?  Offer the delete button
+  }    
 
   deleteArticle() {
     
-    TweenLite.to(this.domElement, 0.3, 
+    TweenLite.to(this.domElement, 0.3, // Animate the article's removal from the page
       { 
         width: '25%',
         margin: 'auto',
