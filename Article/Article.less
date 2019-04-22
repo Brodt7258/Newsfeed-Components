@@ -8,7 +8,6 @@
   border-radius: 10px;
   background-color: white;
   position: relative;
-  height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
 
@@ -24,9 +23,15 @@
   }
 
   .close {
+    display: none;
     position: absolute;
     top: 10px;
     right: 10px;
+    cursor: pointer;
+    transition: color 0.35s;
+    &:hover {
+      color: tomato;
+    }
   }
 
   .expandButton {
@@ -41,8 +46,9 @@
   }
 }
 
-.article-open {
-  height: 400px;
+.article-content {
+  height: 0;
+  opacity: 0;
 }
 
 

@@ -3,19 +3,19 @@
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
-  src: local('Roboto Italic'), local('Roboto-Italic'), url(https://fonts.gstatic.com/s/roboto/v18/KFOkCnqEu92Fr1Mu51xIIzc.ttf) format('truetype');
+  src: local('Roboto Italic'), local('Roboto-Italic'), url(https://fonts.gstatic.com/s/roboto/v19/KFOkCnqEu92Fr1Mu51xIIzc.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v19/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
 }
 /* Below this line is where you will start your work */
 /* It is important to note, you will not be writing any CSS in this file*/
@@ -35,10 +35,138 @@
   margin: 0;
   font-size: 48px;
 }
+.menu-button {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+}
+.menu {
+  position: fixed;
+  top: 75px;
+  left: -350px;
+  width: 350px;
+  height: 100vh;
+  /* This give the height 100% of the screen or, '100% of View Height' */
+  background-color: #81C784;
+  border: 1px solid #004D40;
+  border-left: none;
+  border-bottom: none;
+  z-index: 3;
+  /* This set the layer level of the element, it has precendence over initial level of 1*/
+}
+.menu ul li {
+  list-style-type: none;
+  font-size: 32px;
+  padding: 30px 0;
+  text-align: center;
+}
+.menu-modal {
+  display: none;
+  position: fixed;
+  top: 75px;
+  z-index: 2;
+  background: hsla(0, 0%, 50%, 0.6);
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+}
+.articles {
+  margin-top: 95px;
+}
+.article {
+  margin: 20px 10%;
+  padding: 0 20px 25px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+.article h2 {
+  font-size: 28px;
+  padding: 0;
+  margin: 15px 0 0;
+}
+.article .date {
+  margin: 0;
+  font-size: 14px;
+}
+.article .close {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: color 0.35s;
+}
+.article .close:hover {
+  color: tomato;
+}
+.article .expandButton {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 12px;
+  color: grey;
+  cursor: pointer;
+  transform: translate(-50%);
+  background-color: white;
+}
+.article-content {
+  height: 0;
+  opacity: 0;
+}
+form {
+  margin: 20px 10% 60px;
+  padding: 20px 5% 25px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+form label,
+form input {
+  display: block;
+}
+form input,
+form textarea {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 50%;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #cccccc;
+}
+form textarea {
+  width: calc(100% - 20px);
+  resize: none;
+}
+form label {
+  font-size: 1.4rem;
+}
+form button {
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.35s;
+}
+form button:hover {
+  color: tomato;
+}
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto';
   background-color: #fffef7;
+}
+hr {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
